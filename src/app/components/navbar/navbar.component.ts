@@ -13,7 +13,7 @@ export class NavbarComponent {
 
   @Output() openEventEmitter = new EventEmitter();
 
-  openCart(): void{
+  openCloseCart(): void{
     this.openEventEmitter.emit();
   }
 
