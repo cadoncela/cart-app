@@ -1,0 +1,29 @@
+<navbar [items]="items"
+        (openEventEmitter)="openCart()">
+</navbar>
+
+<div class="container" my-4>
+  <h2 class="my-3">Catalogo de productos</h2>
+  <div class="row">
+    <div [className]="showCart ? 'col-9' : 'col'">
+      <catalog [products]="products" (addEventEmitter)="onAddCart($event)" />
+    </div>
+    @if (showCart) {
+    <div class="col-3">
+      @if (items.length > 0) {
+      <cart
+        [items]="items"
+        [total]="total"
+        (idProductEmitter)="onDeleteCart($event)"
+      >
+      </cart>
+      } @else {
+      <div class="alert alert-warning">No hay elementos en el carro</div>
+      }
+      <button class="btn btn-secondary float-end" (click)="openCart()">
+        Seguir Comprando
+      </button>
+    </div>
+    }
+  </div>
+</div>
