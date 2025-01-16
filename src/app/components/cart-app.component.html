@@ -1,13 +1,7 @@
-<navbar [items]="items" (openEventEmitter)="openCloseCart()"> </navbar>
+<navbar [items]="items"
+        [total]="total">
+</navbar>
 
 <div class="container" my-4>
-  <h2 class="my-3">Catalogo de productos</h2>
-
-  <catalog [products]="products" (addEventEmitter)="onAddCart($event)" />
-  @if (showCart) {
-    <cart-modal
-    [items]="items"
-    (idProductEmitter)="onDeleteCart($event)"
-    (openEventEmitter)="openCloseCart()"></cart-modal>
-  }
+  <router-outlet></router-outlet>
 </div>
