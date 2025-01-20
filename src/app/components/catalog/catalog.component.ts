@@ -2,7 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { SharingDataService } from '../../services/sharing-data.service';
-import { ProductService } from '../../services/product.service';
+import { Store } from '@ngrx/store';
+import { load } from '../../store/product.actions';
 
 @Component({
   selector: 'catalog',
@@ -15,11 +16,13 @@ export class CatalogComponent implements OnInit {
 
   //obtener los datos enviados desde el navbar
   constructor(
-    private productService: ProductService,
-    private sharingDataService: SharingDataService
-  ) {}
+    private sharingDataService: SharingDataService,
+    private store: Store<{ products: any }>
+  ) {
+    this.store.select('products').subscribe(state => this.products= state.products);
+  }
   ngOnInit(): void {
-      this.products = this.productService.fuindAll();
+      this.store.dispatch(load());
   }
 
   onAddCart(product: Product) {

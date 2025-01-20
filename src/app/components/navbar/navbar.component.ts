@@ -13,6 +13,5 @@ export class NavbarComponent {
 
   //Recibir los items desde cart-appComponent
   @Input() items: CartItem[] = [];
-  @Input() total: number = 0;
 
 }

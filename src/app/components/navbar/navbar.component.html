@@ -26,7 +26,6 @@
           <!--router-link va la ruta que está en app.routes-->
           <!--state para enviar datos al componente-->
           <a [routerLink]="['/cart']"
-            [state]="{items: items, total: total}"
             class="nav-link"
             role="button"
             >Cart ({{ items.length }})</a
